@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Event Approval Form</title>
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 12pt;
+      margin: 1cm;
+      line-height: 1.4;
+    }
+    h2, h3 {
+      text-align: center;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+    }
+    h2 { font-size: 12pt; margin-bottom: 2pt; }
+    h3 { font-size: 12pt; margin-bottom: 15pt; }
+    .info { margin-bottom: 10pt; }
+    .instructions {
+      border: 1px solid #000;
+      padding: 6pt;
+      margin-bottom: 15pt;
+    }
+    .instructions p { margin: 2pt 0; }
+    .field { margin-bottom: 10pt; }
+    .signatures { margin-top: 40pt; }
+    .sign-row {
+      display: flex;
+      justify-content: center;
+      gap: 40pt;
+      margin-top: 40pt;
+      flex-wrap: wrap;
+    }
+    .sign-col { text-align: center; font-size: 12pt; }
+    .principal-row { margin-top: 50pt; text-align: center; font-weight: bold; font-size: 12pt; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10pt; }
+    table td { border: 1px solid white; padding: 6pt; vertical-align: top; }
+    ul { margin: 0; padding-left: 16pt; }
+    li { margin-bottom: 3pt; }
+  </style>
+</head>
+<body>
+  <h2>PSG COLLEGE OF TECHNOLOGY, COIMBATORE</h2>
+  <h3>EVENT APPROVAL FORM</h3>
+
+  <div class="info">
+    <div><strong>Event ID:</strong> {{event_id}}</div>
+    <div class="info" style="display: flex; justify-content: space-between;">
+      <div><strong>Date of Application:</strong> {{created_at}}</div>
+      {{#if showExpiresAt}}
+        <div><strong>Due Date for Approval:</strong> {{expires_at}}</div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div class="instructions">
+    <p>1. Events shall be held only on Fridays, Saturdays, or Sundays.</p>
+    <p>2. The number of stalls shall be limited. All stall requests must be submitted and approved at least one week before the event.</p>
+    <p>3. The area must be kept clean throughout the event.</p>
+    <p>4. Discipline must be maintained throughout the event, and overcrowding should be prevented.</p>
+    <p>5. This form must be downloaded and duly got signed and uploaded to the portal within one week of application.</p>
+  </div>
+
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>Event Title:</strong></td>
+        <td>{{event_title}}</td>
+      </tr>
+      <tr>
+        <td><strong>Date:</strong></td>
+        <td>
+          {{#if sameDate}}
+            {{start_date_display}}
+          {{else}}
+            {{start_date_display}} - {{end_date_display}}
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Organised by:</strong></td>
+        <td>{{organiser_name}}</td>
+      </tr>
+      <tr>
+        <td><strong>Faculty Incharge:</strong></td>
+        <td>{{faculty_incharge_name}}</td>
+      </tr>
+
+      {{#if sponsors.length}}
+      <tr>
+        <td><strong>Sponsors:</strong></td>
+        <td>
+          <ul>
+            {{#each sponsors}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+        </td>
+      </tr>
+      {{/if}}
+
+      {{#if halls.length}}
+      <tr>
+        <td><strong>Halls Required:</strong></td>
+        <td>
+          <ul>
+            {{#each halls}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+        </td>
+      </tr>
+      {{/if}}
+
+      {{#if banners.length}}
+      <tr>
+        <td><strong>Banners to be Put:</strong></td>
+        <td>
+          <ul>
+            {{#each banners}}
+              <li>{{this.size}} – {{this.location}}</li>
+            {{/each}}
+          </ul>
+        </td>
+      </tr>
+      {{/if}}
+
+      {{#if showStalls}}
+      <tr>
+        <td><strong>Stalls:</strong></td>
+        <td>
+          <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+            {{#if stalls.food}}<div><strong>Food:</strong> {{stalls.food}}</div>{{/if}}
+            {{#if stalls.sales}}<div><strong>Sales:</strong> {{stalls.sales}}</div>{{/if}}
+            {{#if stalls.marketing}}<div><strong>Marketing:</strong> {{stalls.marketing}}</div>{{/if}}
+          </div>
+        </td>
+      </tr>
+      {{/if}}
+    </tbody>
+  </table>
+
+  <br>
+
+  <!-- Signatures Section -->
+  <div class="signatures">
+    <div class="sign-row">
+      <div class="sign-col">
+        Faculty Incharge<br>
+        <strong>({{faculty_incharge_name}})</strong>
+      </div>
+
+      {{#if showOrganiser}}
+      <div class="sign-col">
+        {{organiser_role}}<br>
+        <strong>({{organiser_name}})</strong>
+      </div>
+      {{/if}}
+
+      {{#if stalls.food}}
+      <div class="sign-col">
+        <strong>Secretary (Canteen)</strong>
+      </div>
+      {{/if}}
+    </div>
+    <div class="sign-row">
+      <div class="sign-col">Dean<br><strong>(Student Affairs)</strong></div>
+      <div class="sign-col">Dean<br><strong>(Academic)</strong></div>
+      <div class="sign-col">Dean<br><strong>(Administration)</strong></div>
+      <div class="sign-col"><strong>Security Manager</strong></div>
+    </div>
+
+    <div class="principal-row"><strong>Principal</strong></div>
+  </div>
+</body>
+</html>
