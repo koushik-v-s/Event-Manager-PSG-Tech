@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=250&section=header&text=PSGCT%20Event%20Hub&fontSize=70&animation=fadeIn&fontAlignY=38&desc=Streamlined%20Event%20Management%20System&descAlignY=55&descAlign=50" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=87431D&height=250&section=header&text=PSGCT%20Event%20Hub&fontSize=70&animation=fadeIn&fontAlignY=38&desc=Streamlined%20Event%20Management%20System&descAlignY=55&descAlign=50" />
 
   <p align="center">
     <strong>A modern, full-stack event management portal built for PSG College of Technology.</strong><br>
